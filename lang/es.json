@@ -1,0 +1,118 @@
+{
+  "navbarData": {
+    "navigation": {
+      "home": "Inicio",
+      "about": "Acerca de mi",
+      "projects": "Proyectos",
+      "contact": "Contacto"
+    },
+    "button": "Descargar CV"
+  },
+  "resumeData": {
+    "position": "Desarrollador FrontEnd",
+    "profile": {
+      "title": "Perfil",
+      "description": "Ingeniero mecatrónico enfocado al desarrollo con más de un año y medio de experiencia como desarrollador Front-End usando ReactJS, Nextjs y React Native, me caracterizó por se una persona que están en contante aprendizaje para mejorar mis habilidades profesionales. "
+    },
+    "education": {
+      "title": "Educación",
+      "schools": [
+        {
+          "name": "Universidad Autónoma del Caribe",
+          "degree": "Ingeniero Mecatrónico",
+          "graduated": "2021",
+          "description": "Ingeniero Mecatrónico con especialidad en robótica y automatización industrial."
+        }
+      ]
+    },
+    "work": {
+      "title": "Experiencia laboral",
+      "jobs": [
+        {
+          "company": "Scrinio",
+          "title": "Desarrollador Frontend",
+          "years": "Septiembre 2022 - Presente",
+          "description": "Desarrollo de aplicaciones web y móviles usando ReactJS, Nextjs y React Native.",
+          "responsibilities": [
+            "Desarrolle webparts para la plataforma de Sena usando ReactJS.",
+            "Desarrollo de paginas web usando NextJS.",
+            "Desarrollo de aplicaciones móviles usando React Native con Expo."
+          ]
+        },
+        {
+          "company": "Software & Consulting Group",
+          "title": "Desarrollador Frontend",
+          "years": "Septiembre 2022 - Presente",
+          "description": "Desarrollo de funcionalidades y componentes  usando ReactJS,Material UI, Redux entre otros.",
+          "responsibilities": [
+            "Desarrollo de funcionalidades y componentes  usando ReactJS,Material UI, Redux entre otros.",
+            "Mejoro la experiencia de usuario de la aplicación web usando ReactJS, Material UI, Redux entre otros.",
+            "Mejoro el codigo fuente de la aplicación web usando buenas practicas de programación como lo son los principios SOLID.",
+            "Realizo pasos a producción de la aplicación web."
+          ]
+        },
+        {
+          "company": "Muebles Jamar SAS",
+          "title": "Analista de software",
+          "years": "Marzo 2022 - Presente",
+          "description": "Desarrollo de procedimientos en PLSQL para la automatización de procesos, desarrollo de aplicaciones web usando Angular, NodeJS, Python,  Docker, AWS",
+          "responsibilities": [
+            "Realizo modificaciones en los paquetes de las bases de datos para agregar funciones, con el fin que los funcionales puedan usarlas para realizar los diferentes análisis de los clientes usando PLSQL.",
+            "Desarrollo mejoras de funcionalidades a la web administrativa de la empresa usando Angular.",
+            "Lleve a cabo migraciones de Lambda hechas en Ruby a Python."
+          ]
+        },
+        {
+          "company": "Freelance",
+          "title": "Desarrollador Frontend",
+          "years": "2020 - Presente",
+          "description": "Desarrollo de aplicaciones web y móviles usando ReactJS, Nextjs y React Native.",
+          "responsibilities": [
+            "Desarrollo de aplicaciones web y móviles usando ReactJS, Nextjs y React Native."
+          ]
+        },
+        {
+          "company": "Mocion SAS - Evius",
+          "title": "Desarrollador FrontEnd",
+          "years": "Marzo 2022 - Diciembre 2022",
+          "description": "Desarrollo de aplicaciones web, funcionalidades, componentes y pruebas automatizadas usando ReactJS, Nextjs, Ant Design y Cypress.",
+          "responsibilities": [
+            "Desarrolle la web de pagos de la plataforma usando la pasarela de pagos Wompi mediante NextJS, de la cual hice uso de las API ROUTES para crear toda la lógica de la transacción y manejando el estado con Context y useReducer.",
+            "Realize pruebas automáticas mediante Cypress para verificar el correcto funcionamiento de plataforma a cualquier cambio en el código fuente.",
+            "Desarrolle nuevas funcionalidades como la autenticación de usuarios anónimos utilizando Firebase Auth.",
+            "Desarrolle la obtención de estadísticas de los usuarios activos utilizando realtime de Firebase para la plataforma."
+          ]
+        },
+        {
+          "company": "Antares Alliance SAS",
+          "title": "Gestor de proyectos",
+          "years": "Febrero 2021 - Marzo 2020",
+          "description": "Gestión de proyectos de desarrollo de software, desarrollo de aplicaciones web y móviles usando ReactJS, Nextjs, React Native, NodeJS, Express, MongoDB,  Docker, AWS, Nest, entre otros.",
+          "responsibilities": [
+            "Realice la gestión y dirección de los proyectos tecnológicos de la empresa.",
+            "Desarrolle la aplicación para los clientes de EazyFuels usando React Native, además integre Redux para manejar el estado y Open Pay para gestionar los pagos.",
+            "Desarrolle aplicaciones web mediante ReactJS y NextJS además páginas web utilizando WordPress.",
+            "Efectúe los despliegues de las aplicaciones web mediante Docker y AWS."
+          ]
+        }
+      ]
+    },
+    "skills": "Conocimientos",
+    "skillsOther": "Otros conocimientos",
+    "languages": {
+      "title": "Idiomas",
+      "languages": ["Español - Nativo", "Inglés - Intermedio"]
+    }
+  },
+  "homeData": {
+    "hello": "Hola,",
+    "iam": "Soy",
+    "position": "Desarrollador Frontend",
+    "resume": "Ver resumen"
+  },
+  "headData": {
+    "title" : "Cristian Florez - Desarrollador Frontend",
+    "description" : "Soy un Desarrollador Frontend con más de dos años de experiencia como desarrollador Front-End usando ReactJS, Nextjs, React Native y Angular, me caracterizó por ser una persona en constante aprendizaje para mejorar mis habilidades profesionales.",
+    "keys": "Cristian Florez, Desarrollador Frontend, ReactJS, Nextjs, React Native, Angular, Javascript, HTML, CSS, NodeJS, Express, MongoDB, Docker, AWS, Nest, entre otros."
+  }
+}

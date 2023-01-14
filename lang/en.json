@@ -1,0 +1,119 @@
+{
+  "navbarData": {
+    "navigation": {
+      "home": "Home",
+      "about": "About me",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "button": "Download CV"
+  },
+  "resumeData": {
+    "position": "Frontend Developer",
+    "profile": {
+      "title": "Profile",
+      "description": "Mechatronics engineer focused on development with more than a year and a half of experience as a Front-End developer using ReactJS, Nextjs and React Native, characterized me as a person who are constantly learning to improve my professional skills. "
+    },
+    "education": {
+      "title": "Education",
+      "schools": [
+        {
+          "name": "Universidad Autónoma del Caribe",
+          "degree": "Mechatronics Engineer",
+          "graduated": "2021",
+          "description": "Mechatronics Engineer specializing in robotics and industrial automation."
+        }
+      ]
+    },
+    "work": {
+      "title": "Work experience",
+      "jobs": [
+        {
+          "company": "Scrinio",
+          "title": "Frontend Developer",
+          "years": "September 2022 - Present",
+          "description": "Development of web and mobile applications using ReactJS, Nextjs and React Native.",
+          "responsibilities": [
+            "Develop webparts for the Sena platform using ReactJS.",
+            "Development of web pages using NextJS.",
+            "Mobile app development using React Native with Expo."
+          ]
+        },
+        {
+          "company": "Software & Consulting Group",
+          "title": "Frontend Developer",
+          "years": "September 2022 - Present",
+          "description": "Development of functionalities and components using ReactJS, Material UI, Redux among others.",
+          "responsibilities": [
+            "Development of features and components using ReactJS, Material UI, Redux among others.",
+            "I improve the user experience of the web application using ReactJS, Material UI, Redux among others.",
+            "I improve the source code of the web application using good programming practices such as SOLID principles.",
+            "I carry out steps to production of the web application."
+          ]
+        },
+        {
+          "company": "Muebles Jamar SAS",
+          "title": "Software Analyst",
+          "years": "March 2022 - Present",
+          "description": "Development of procedures in PLSQL for process automation, web application development using Angular, NodeJS, Python, Docker, AWS",
+          "responsibilities": [
+            "I make modifications in the database packages to add functions, so that the functionals can use them to carry out the different analyzes of the clients using PLSQL.",
+            "I develop functionality improvements to the company's administrative website using Angular.",
+            "Perform Lambda migrations made in Ruby to Python."
+          ]
+        },
+        {
+          "company": "Freelance",
+          "title": "Frontend Developer",
+          "years": "2020 - Present",
+          "description": "Development of web and mobile applications using ReactJS, Nextjs and React Native.",
+          "responsibilities": [
+            "Development of web and mobile applications using ReactJS, Nextjs and React Native."
+          ]
+        },
+        {
+          "company": "Mocion SAS - Evius",
+          "title": "Front End Developer",
+          "years": "March 2022 - December 2022",
+          "description": "Development of web applications, features, components and automated tests using ReactJS, Nextjs, Ant Design and Cypress.",
+          "responsibilities": [
+            "I developed the payment web of the platform using the Wompi payment gateway through NextJS, of which I made use of the ROUTES APIs to create all the logic of the transaction and managing the state with Context and useReducer.",
+            "Perform automated tests using Cypress to verify correct platform functionality to any source code changes.",
+            "Develop new functionality such as anonymous user authentication using Firebase Auth.",
+            "Develop active user analytics using Firebase realtime for the platform."
+          ]
+        },
+        {
+          "company": "Antares Alliance SAS",
+          "title": "Project Manager",
+          "years": "February 2021 - March 2020",
+          "description": "Management of software development projects, development of web and mobile applications using ReactJS, Nextjs, React Native, NodeJS, Express, MongoDB, Docker, AWS, Nest, among others.",
+          "responsibilities": [
+            "Carry out the management and direction of the company's technological projects.",
+            "Developed the app for EazyFuels customers using React Native, plus integrated Redux to handle status and Open Pay to handle payments.",
+            "Develop web applications using ReactJS and NextJS as well as web pages using WordPress.",
+            "Deploy your web applications using Docker and AWS."
+          ]
+        }
+      ]
+    },
+    "skills": "Knowledge",
+    "skillsOther": "Other knowledge",
+    "languages": {
+      "title": "Languages",
+      "languages": ["Spanish - Native", "English - Intermediate"]
+    } 
+  
+  },
+  "homeData": {
+    "hello": "Hello,",
+    "iam": "I am",
+    "position": "Frontend Developer",
+    "summary": "View summary"
+  }, 
+  "headData" : {
+    "title" : "Cristian Florez - Frontend Developer",
+    "description" : "I am a Frontend Developer with more than two years of experience as a Front-End developer using ReactJS, Nextjs, React Native and Angular, characterized me as a person who is constantly learning to improve my professional skills.",
+    "keys": "Cristian Florez, Frontend Developer, ReactJS, Nextjs, React Native, Angular, Javascript, HTML, CSS, NodeJS, Express, MongoDB, Docker, AWS, Nest, among others."
+  }
+}
