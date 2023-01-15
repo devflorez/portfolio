@@ -24,7 +24,7 @@ export default function Main({ navbar, head={
       </Head>
 
       <main className="relative marker:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="absolute top-0 left-0 right-0 bottom-0">
+        <div className="absolute -z-10 top-0 left-0 right-0 bottom-0">
           <Polygon
             colorPolygon={primary}
             points={top}

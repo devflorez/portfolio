@@ -10,6 +10,8 @@ const NAVIGATIONS = {
   contact: "/#contact",
 };
 
+const URL_TO_DOWNLOAD = "CV_Cristian_Florez_Frontend_Developer.pdf";
+
 export default function Navbar({ navbar }) {
   const { navigation, button } = navbar;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,6 +37,18 @@ export default function Navbar({ navbar }) {
 
   const handleMenuClick = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const downloadCV = async () => {
+    const response = await fetch(URL_TO_DOWNLOAD);
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "CV_Cristian_Florez_Frontend_Developer.pdf";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
   };
 
   return (
@@ -78,12 +92,12 @@ export default function Navbar({ navbar }) {
           ))}
 
           <div>
-            <a
-              href="/CV_Cristian_Florez_Frontend_Developer.pdf"
+            <button
+              onClick={downloadCV}
               className="inline-block text-sm px-4 py-2 leading-none border rounded text-black border-black hover:border-transparent hover:text-white hover:bg-black mt-4 lg:mt-0"
             >
               {button}
-            </a>
+            </button>
           </div>
         </div>
         <div className="w-full  flex-grow lg:flex lg:items-center lg:w-auto lg:visible hidden">
@@ -99,12 +113,12 @@ export default function Navbar({ navbar }) {
             ))}
           </div>
           <div>
-            <a
-              href="/CV_Cristian_Florez_Frontend_Developer.pdf"
+            <button
+              onClick={downloadCV}
               className="inline-block text-sm px-4 py-2 leading-none border rounded text-black border-black hover:border-transparent hover:text-white hover:bg-black mt-4 lg:mt-0"
             >
               {button}
-            </a>
+            </button>
           </div>
         </div>
       </nav>
