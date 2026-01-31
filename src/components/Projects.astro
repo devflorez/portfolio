@@ -1,0 +1,33 @@
+---
+import { projects } from '../data/projects';
+---
+<section id="projects" class="reveal px-6 py-20">
+  <div class="mx-auto max-w-6xl space-y-10">
+    <div>
+      <div class="text-sm uppercase tracking-[0.4em] text-muted">Projects</div>
+      <h2 class="mt-3 text-2xl font-semibold text-offwhite md:text-3xl">Curated work</h2>
+    </div>
+    <div class="grid gap-8 md:grid-cols-2">
+      {projects.slice(0, 4).map((project) => (
+        <article class="flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-black/40 p-6 transition duration-200 hover:-translate-y-1 hover:border-accent/60 hover:bg-white/5">
+          <div class="space-y-3">
+            <h3 class="text-xl font-semibold text-offwhite">{project.name}</h3>
+            <p class="text-sm font-medium text-muted">{project.description}</p>
+            <p class="text-base text-offwhite/80">{project.impact}</p>
+          </div>
+          <div class="mt-6 grid gap-3 text-sm text-offwhite/70">
+            <div class="flex flex-wrap gap-2">
+              {project.stack.map((tag) => (
+                <span class="rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.3em] text-muted">{tag}</span>
+              ))}
+            </div>
+            <div class="flex gap-4 text-xs uppercase tracking-[0.4em] text-accent">
+              <a class="transition-colors duration-150 hover:text-blue-400" href={project.live} rel="noopener" target="_blank">Live</a>
+              <a class="transition-colors duration-150 hover:text-blue-400" href={project.repo} rel="noopener" target="_blank">Repo</a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

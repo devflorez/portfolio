@@ -1,0 +1,10 @@
+---
+import { siteMetadata } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="px-6 pb-12 pt-6 text-xs uppercase tracking-[0.3em] text-muted">
+  <div class="mx-auto flex max-w-6xl flex-col gap-2 border-t border-white/5 pt-6 text-center md:flex-row md:items-center md:justify-between">
+    <span>© {year} {siteMetadata.name}</span>
+    <span>Built with Astro · Vercel-ready</span>
+  </div>
+</footer>

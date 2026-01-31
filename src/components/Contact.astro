@@ -1,0 +1,39 @@
+---
+import { siteMetadata } from '../data/site';
+---
+<section id="contact" class="reveal px-6 py-20">
+  <div class="mx-auto max-w-4xl space-y-6 rounded-3xl border border-white/10 bg-white/5 p-8">
+    <div>
+      <div class="text-sm uppercase tracking-[0.4em] text-muted">Contact</div>
+      <h2 class="mt-3 text-2xl font-semibold text-offwhite">Let’s tackle the next sprint together.</h2>
+    </div>
+    <p class="text-base text-offwhite/80">
+      I make myself available for focused collaborations that demand fast feedback loops, reliable
+      product thinking, and polished delivery.
+    </p>
+    <div class="flex flex-wrap gap-4 text-sm font-semibold uppercase tracking-[0.3em] text-accent">
+      <a
+        class="rounded-full border border-white/20 px-5 py-3 transition hover:border-blue-400"
+        href={`mailto:${siteMetadata.email}`}
+      >
+        Email
+      </a>
+      <a
+        class="rounded-full border border-white/20 px-5 py-3 transition hover:border-blue-400"
+        href={siteMetadata.linkedin}
+        rel="noopener"
+        target="_blank"
+      >
+        LinkedIn
+      </a>
+      <a
+        class="rounded-full border border-white/20 px-5 py-3 transition hover:border-blue-400"
+        href={siteMetadata.github}
+        rel="noopener"
+        target="_blank"
+      >
+        GitHub
+      </a>
+    </div>
+  </div>
+</section>

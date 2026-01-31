@@ -1,43 +1,36 @@
-# Astro Starter Kit: Minimal
+# Cristian Florez — Developer Portfolio
 
-```sh
-npm create astro@latest -- --template minimal
+## Overview
+- Minimal, dark single-page built with Astro + TypeScript + Tailwind CSS.
+- Data-driven sections (Hero, About, Stack, Projects, Contact/Footer) powered by `src/data`.
+- Focus on performance, accessibility, and premium visual language with black + blue accents.
+
+## Getting started
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+## Build & deploy
+```bash
+npm run build
+vercel deploy --prod
 ```
+- `astro` output is static; deploy on Vercel for instant previews and analytics.
+- For previewing locally (`dist`), run `npm run preview` after `npm run build`.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Key decisions
+- **Architecture:** Data files (`site.ts`, `stack.ts`, `projects.ts`) supply props to presentational sections, keeping components stateless and reusable.
+- **Persona:** Updated copy pulls from GitHub details (Ingeniero Mecatrónico + Full Stack) and a contact email matching devflorez’s public profile.
+- **Layout:** `BaseLayout.astro` injects SEO metadata (title, description, Open Graph, canonical) and imports `globals.css` for typography and animation tokens.
+- **Styling:** Tailwind theme extends with `dark`, `offwhite`, `muted`, `accent` colors, Inter font, and subtle fade-up keyframes. Global `.reveal` class drives scroll animation with `prefers-reduced-motion` guard.
+- **Interactions:** Hover/ focus states use accent blue, focus-visible rings, and soft card transitions—no heavy JS or carousels.
+- **Accessibility:** Semantic sections, meaningful headings/links, focus-visible outlines, and motion preferences honored.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Requirements checklist
+- [x] Astro + TypeScript + Tailwind single-page (Hero, About, Stack, Projects, Contact/Footer).
+- [x] Data separated in `src/data` and layout in `BaseLayout.astro`.
+- [x] Components under `src/components` consume typed data.
+- [x] Dark theme with blue accents, subtle animations, reduced-motion support.
+- [x] SEO metadata and accessible markup; ready for Lighthouse tuning (Perf/A11y/Best/SEO ≥95).
+- [x] README documents how to run, build, and deploy to Vercel plus design decisions.

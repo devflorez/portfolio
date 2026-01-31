@@ -1,0 +1,29 @@
+---
+import { stack } from '../data/stack';
+---
+<section id="stack" class="reveal px-6 py-20">
+  <div class="mx-auto max-w-6xl space-y-10">
+    <div>
+      <div class="text-sm uppercase tracking-[0.4em] text-muted">Stack</div>
+      <h2 class="mt-3 text-2xl font-semibold text-offwhite md:text-3xl">Systems that feel seamless.</h2>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      {stack.map((category) => (
+        <article class="flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-white/5 p-6 transition duration-200 hover:border-accent/60 hover:bg-white/10">
+          <div>
+            <h3 class="text-lg font-semibold text-offwhite">{category.title}</h3>
+            <p class="mt-2 text-sm text-muted">{category.description}</p>
+          </div>
+          <ul class="mt-6 space-y-2 text-sm text-offwhite/80">
+            {category.tools.map((tool) => (
+              <li class="flex items-center gap-3" aria-label={tool}>
+                <span class="h-1 w-1 rounded-full bg-accent" aria-hidden="true" />
+                {tool}
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
