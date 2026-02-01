@@ -54,6 +54,12 @@ export const events: EventDefinition[] = [
     description: 'Semana Santa comienza el Domingo de Ramos.',
     targetDate: (year: number) => addDays(easterSunday(year), -7),
   },
+  {
+    slug: 'gta-6',
+    nameEs: 'GTA 6 (Estreno)',
+    description: 'El lanzamiento digital mundial de Grand Theft Auto VI.',
+    targetDate: fixedDate(11, 19),
+  },
 ];
 
 export const getEventBySlug = (slug: string | undefined) =>
