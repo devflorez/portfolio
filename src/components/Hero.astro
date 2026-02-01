@@ -6,7 +6,9 @@ import { navLinks, siteMetadata } from '../data/site';
     class="sticky top-0 z-20 border-b border-white/5 bg-dark/80 px-6 py-4 backdrop-blur"
     aria-label="Primary navigation"
   >
-    <div class="mx-auto flex w-full max-w-6xl flex-col gap-3 px-1 md:flex-row md:items-center md:justify-between">
+    <div
+      class="mx-auto flex w-full max-w-6xl flex-col gap-3 px-1 md:flex-row md:items-center md:justify-between"
+    >
       <div class="flex items-center justify-between gap-4">
         <div class="text-sm font-semibold tracking-[0.3em] text-offwhite">CF</div>
         <button
@@ -20,7 +22,7 @@ import { navLinks, siteMetadata } from '../data/site';
           ES · EN
         </button>
       </div>
-      <div class="flex flex-wrap justify-end gap-4 text-[0.6rem] uppercase tracking-[0.33em] text-muted md:text-xs">
+      <div class="flex flex-wrap items-center md:justify-center gap-4 text-[0.6rem] uppercase tracking-[0.33em] text-muted justify-end md:text-xs">
         {navLinks.map((link) => (
           <a
             class="transition-colors duration-150 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"

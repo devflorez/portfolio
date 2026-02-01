@@ -31,7 +31,9 @@ import { projects } from '../data/projects';
             </div>
             <div class="flex gap-4 text-xs uppercase tracking-[0.4em] text-accent">
               <a class="transition-colors duration-150 hover:text-blue-400" href={project.live} rel="noopener" target="_blank">Live</a>
+             {project.repo &&
               <a class="transition-colors duration-150 hover:text-blue-400" href={project.repo} rel="noopener" target="_blank">Repo</a>
+              }
             </div>
           </div>
         </article>

@@ -1,6 +1,7 @@
 ---
 import '../styles/globals.css';
 import { siteMetadata } from '../data/site';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title?: string;
@@ -60,6 +61,7 @@ const keywords = siteMetadata.keywords?.join(', ') ?? 'Full Stack Developer, Ast
   </head>
   <body class="bg-dark text-offwhite" data-lang="en">
     <slot />
+    <Analytics />
     <script type="module">
       (() => {
         const body = document.body;
