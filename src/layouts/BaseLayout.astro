@@ -6,12 +6,13 @@ import Analytics from '@vercel/analytics/astro';
 interface Props {
   title?: string;
   description?: string;
+  canonical?: string;
 }
 
-const { title, description } = Astro.props as Props;
+const { title, description, canonical } = Astro.props as Props;
 const pageTitle = title ? `${title} | ${siteMetadata.name}` : siteMetadata.name;
 const pageDescription = description ?? siteMetadata.description;
-const canonicalUrl = siteMetadata.siteUrl ?? 'https://cristianflorez.co';
+const canonicalUrl = canonical ?? siteMetadata.siteUrl ?? 'https://cristianflorez.co';
 const ogImage = siteMetadata.ogImage ?? `${canonicalUrl}/og-image.png`;
 const keywords = siteMetadata.keywords?.join(', ') ?? 'Full Stack Developer, Astro, Clean Architecture';
 ---

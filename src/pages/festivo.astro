@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteMetadata } from '../data/site';
+import { isColombiaHoliday } from '../utils/isHoliday';
+
+const title = '¿Hoy es festivo en Colombia? – Verifícalo aquí';
+const description =
+  'Consulta si hoy es festivo en Colombia. Herramienta rápida y actualizada para saber si la fecha actual es día festivo.';
+const ogImage = siteMetadata.ogImage ?? `${siteMetadata.siteUrl}/og-image.png`;
+
+const colombiaNow = new Date(
+  new Date().toLocaleString('en-US', {
+    timeZone: 'America/Bogota',
+  })
+);
+const tomorrow = new Date(colombiaNow);
+tomorrow.setDate(tomorrow.getDate() + 1);
+
+const formatter = new Intl.DateTimeFormat('es-CO', {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const formatDate = (date: Date) => {
+  const raw = formatter.format(date);
+  return `${raw[0].toUpperCase()}${raw.slice(1)}`;
+};
+
+const todayResult = isColombiaHoliday(colombiaNow);
+const tomorrowResult = isColombiaHoliday(tomorrow);
+
+const formatCopy = (result: typeof todayResult, label: string) => {
+  const { isHoliday, match } = result;
+  const copy = isHoliday
+    ? `Sí, ${label} es festivo en Colombia${
+        match?.nameEs ? ` — ${match.nameEs}` : match?.nameEn ? ` — ${match.nameEn}` : ''
+      }`
+    : `No, ${label} no es festivo en Colombia`;
+  const emoji = isHoliday ? '✅' : '❌';
+  const note = isHoliday
+    ? 'La fecha aparece en el calendario oficial colombiano.'
+    : 'El calendario oficial no marca este día como festivo.';
+
+  return { copy, emoji, note };
+};
+
+const todayCopy = formatCopy(todayResult, 'hoy');
+const tomorrowCopy = formatCopy(tomorrowResult, 'mañana');
+const ogUrl = `${siteMetadata.siteUrl}/festivo`;
+const todayFormatted = formatDate(colombiaNow);
+const tomorrowFormatted = formatDate(tomorrow);
+const { dateKey: todayKey } = todayResult;
+const { dateKey: tomorrowKey } = tomorrowResult;
+const cardData = [
+  { label: 'Hoy', result: todayCopy, displayDate: todayFormatted, datetime: todayKey },
+  { label: 'Mañana', result: tomorrowCopy, displayDate: tomorrowFormatted, datetime: tomorrowKey },
+];
+---
+<head>
+  <meta charset="utf-8" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:url" content={ogUrl} />
+  <meta property="og:type" content="website" />
+</head>
+
+<BaseLayout title={title} description={description} canonical={ogUrl}>
+  <div class="min-h-screen bg-dark text-offwhite">
+    <main class="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6 py-20 text-center">
+      <section class="space-y-6">
+        <p class="text-xs uppercase tracking-[0.4em] text-muted">Herramienta · Festivos Colombia</p>
+        <h1 class="text-4xl font-semibold leading-tight text-offwhite md:text-5xl">¿Hoy es festivo?</h1>
+        <time datetime={todayKey} class="text-lg font-medium text-muted">
+          Hoy es {todayFormatted}.
+        </time>
+        <div class="grid gap-6 md:grid-cols-2 w-full">
+          {cardData.map(({ label, result, displayDate, datetime }) => (
+            <article class="group relative flex flex-col items-center gap-4 rounded-3xl border border-white/10 bg-gradient-to-b from-black/60 to-black/40 px-8 py-10 text-center shadow-[0_20px_50px_rgba(0,0,0,0.6)] transition hover:-translate-y-1 hover:border-accent/70">
+              <span
+                role="img"
+                aria-label={`${label} ${result.emoji === '✅' ? 'es festivo' : 'no es festivo'}`}
+                class="text-5xl"
+              >
+                {result.emoji}
+              </span>
+              <p class="text-xs uppercase tracking-[0.4em] text-muted">{label}</p>
+              <p class="text-lg font-medium text-offwhite">
+                <time datetime={datetime}>{displayDate}</time>
+              </p>
+              <p class="text-2xl font-semibold text-accent">{result.copy}</p>
+              <p class="text-sm font-medium text-muted">{result.note}</p>
+              <div class="absolute inset-x-8 bottom-6 hidden h-px bg-gradient-to-r from-transparent via-accent/80 to-transparent group-hover:block" />
+            </article>
+          ))}
+        </div>
+        <p class="text-sm text-muted">Información basada en el calendario oficial.</p>
+      </section>
+    </main>
+  </div>
+</BaseLayout>
