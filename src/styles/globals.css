@@ -50,3 +50,50 @@ body {
     opacity: 1;
   }
 }
+
+.lang {
+  display: none;
+}
+
+body[data-lang='es'] .lang-es {
+  display: block;
+}
+
+body[data-lang='es'] .lang-en {
+  display: none;
+}
+
+body[data-lang='en'] .lang-en {
+  display: block;
+}
+
+body[data-lang='en'] .lang-es {
+  display: none;
+}
+
+.lang-inline {
+  display: none;
+}
+
+body[data-lang='es'] .lang-inline.lang-es {
+  display: inline;
+}
+
+body[data-lang='en'] .lang-inline.lang-en {
+  display: inline;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+    rgba(59, 130, 246, 0.35),
+    transparent 45%
+  );
+  opacity: var(--pointer-opacity, 0);
+  transition: opacity 0.45s ease;
+  mix-blend-mode: screen;
+}

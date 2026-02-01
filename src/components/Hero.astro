@@ -6,45 +6,81 @@ import { navLinks, siteMetadata } from '../data/site';
     class="sticky top-0 z-20 border-b border-white/5 bg-dark/80 px-6 py-4 backdrop-blur"
     aria-label="Primary navigation"
   >
-    <div class="mx-auto flex max-w-6xl items-center justify-between">
-      <div class="text-sm font-semibold tracking-[0.3em] text-offwhite">CF</div>
-      <div class="flex gap-6 text-xs uppercase tracking-[0.4em] text-muted">
+    <div class="mx-auto flex w-full max-w-6xl flex-col gap-3 px-1 md:flex-row md:items-center md:justify-between">
+      <div class="flex items-center justify-between gap-4">
+        <div class="text-sm font-semibold tracking-[0.3em] text-offwhite">CF</div>
+        <button
+          type="button"
+          class="rounded-full border border-white/10 bg-black/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-offwhite transition hover:border-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:hidden"
+          data-lang-toggle
+          aria-pressed="true"
+          aria-label="Cambiar idioma / Switch language"
+          onclick="window.toggleLanguage?.()"
+        >
+          ES · EN
+        </button>
+      </div>
+      <div class="flex flex-wrap justify-end gap-4 text-[0.6rem] uppercase tracking-[0.33em] text-muted md:text-xs">
         {navLinks.map((link) => (
           <a
             class="transition-colors duration-150 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             href={link.href}
           >
-            {link.label}
+            <span class="lang lang-es">{link.labelEs}</span>
+            <span class="lang lang-en">{link.labelEn}</span>
           </a>
         ))}
+        <button
+          type="button"
+          class="rounded-full border border-white/10 bg-black/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-offwhite transition hover:border-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent hidden md:inline-flex"
+          data-lang-toggle
+          aria-pressed="true"
+          aria-label="Cambiar idioma / Switch language"
+          onclick="window.toggleLanguage?.()"
+        >
+          ES · EN
+        </button>
       </div>
     </div>
   </nav>
   <section class="reveal mt-16 px-6 py-12 md:py-20">
     <div class="mx-auto max-w-5xl space-y-6">
-      <p class="text-sm uppercase tracking-[0.4em] text-muted">{siteMetadata.experience}</p>
+      <p class="text-sm uppercase tracking-[0.4em] text-muted">
+        <span class="lang lang-es">{siteMetadata.experienceEs}</span>
+        <span class="lang lang-en">{siteMetadata.experienceEn}</span>
+      </p>
       <h1 class="text-4xl font-semibold leading-tight text-offwhite md:text-6xl">
         {siteMetadata.name}
       </h1>
-      <p class="text-xl font-light text-offwhite/80 sm:max-w-3xl">
-        {siteMetadata.role} crafting scalable products that feel immediate and intuitive.
+      <p class="text-xl font-light text-offwhite/80 sm:max-w-3xl lang lang-es">
+        {siteMetadata.role} que diseña productos escalables, inmediatos e intuitivos.
+      </p>
+      <p class="text-xl font-light text-offwhite/80 sm:max-w-3xl lang lang-en">
+        {siteMetadata.roleEn} crafting scalable products that feel immediate and intuitive.
       </p>
       <div class="flex flex-wrap gap-4">
         <a
           class="rounded-full border border-transparent bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-black transition hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           href="#contact"
         >
-          Start a project
+          <span class="lang lang-es">Inicia un proyecto</span>
+          <span class="lang lang-en">Start a project</span>
         </a>
         <a
           class="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-offwhite transition hover:border-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           href="#projects"
         >
-          See work
+          <span class="lang lang-es">Ver trabajo</span>
+          <span class="lang lang-en">See work</span>
         </a>
       </div>
       <div class="text-sm font-medium text-muted">
-        {siteMetadata.location} · {siteMetadata.availability}
+        <span class="lang lang-es">
+          {siteMetadata.location} · {siteMetadata.availability}
+        </span>
+        <span class="lang lang-en">
+          {siteMetadata.locationEn} · {siteMetadata.availabilityEn}
+        </span>
       </div>
     </div>
   </section>

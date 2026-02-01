@@ -4,15 +4,22 @@ import { stack } from '../data/stack';
 <section id="stack" class="reveal px-6 py-20">
   <div class="mx-auto max-w-6xl space-y-10">
     <div>
-      <div class="text-sm uppercase tracking-[0.4em] text-muted">Stack</div>
-      <h2 class="mt-3 text-2xl font-semibold text-offwhite md:text-3xl">Systems that feel seamless.</h2>
+      <div class="text-sm uppercase tracking-[0.4em] text-muted">
+        <span class="lang lang-es">Stack</span>
+        <span class="lang lang-en">Stack</span>
+      </div>
+      <h2 class="mt-3 text-2xl font-semibold text-offwhite md:text-3xl">
+        <span class="lang lang-es">Sistemas que se sienten fluidos.</span>
+        <span class="lang lang-en">Systems that feel seamless.</span>
+      </h2>
     </div>
     <div class="grid gap-6 md:grid-cols-3">
       {stack.map((category) => (
         <article class="flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-white/5 p-6 transition duration-200 hover:border-accent/60 hover:bg-white/10">
           <div>
             <h3 class="text-lg font-semibold text-offwhite">{category.title}</h3>
-            <p class="mt-2 text-sm text-muted">{category.description}</p>
+            <p class="mt-2 text-sm text-muted lang lang-es">{category.description}</p>
+            <p class="mt-2 text-sm text-muted lang lang-en">{category.descriptionEn}</p>
           </div>
           <ul class="mt-6 space-y-2 text-sm text-offwhite/80">
             {category.tools.map((tool) => (

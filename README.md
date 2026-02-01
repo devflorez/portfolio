@@ -26,6 +26,7 @@ vercel deploy --prod
 - **Styling:** Tailwind theme extends with `dark`, `offwhite`, `muted`, `accent` colors, Inter font, and subtle fade-up keyframes. Global `.reveal` class drives scroll animation with `prefers-reduced-motion` guard.
 - **Interactions:** Hover/ focus states use accent blue, focus-visible rings, and soft card transitions—no heavy JS or carousels.
 - **Accessibility:** Semantic sections, meaningful headings/links, focus-visible outlines, and motion preferences honored.
+- **Localization:** A lightweight toggle surfaces Spanish and English copy for each section, defaulting to the browser language and persisting the choice via `localStorage`.
 
 ## Requirements checklist
 - [x] Astro + TypeScript + Tailwind single-page (Hero, About, Stack, Projects, Contact/Footer).

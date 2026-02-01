@@ -1,23 +1,33 @@
 ---
-import { siteMetadata } from '../data/site';
+const aboutEs = [
+  'Construyo experiencias full-stack para equipos que necesitan predictibilidad sin sacrificar la sensación.',
+  'Cada pantalla está optimizada para pintado rápido, flujos accesibles y instrumentación transparente.',
+  'Desde librerías de componentes hasta pipelines de despliegue, el foco está en impacto medible y claridad.',
+];
+
+const aboutEn = [
+  'I shape full-stack experiences for teams that need predictability without sacrificing feel.',
+  'Every screen is optimized for fast paint, accessible flows, and transparent instrumentation.',
+  'From component libraries to deploy pipelines, the focus remains on measurable impact and delivery clarity.',
+];
 ---
 <section id="about" class="reveal px-6 py-20">
   <div class="mx-auto max-w-4xl space-y-5">
-    <div class="mb-4 text-sm uppercase tracking-[0.4em] text-muted">About</div>
-    <h2 class="text-2xl font-semibold text-offwhite md:text-3xl">Precision and clarity in every release.</h2>
+    <div class="mb-4 text-sm uppercase tracking-[0.4em] text-muted">
+      <span class="lang lang-es">Sobre mí</span>
+      <span class="lang lang-en">About</span>
+    </div>
+    <h2 class="text-2xl font-semibold text-offwhite md:text-3xl">
+      <span class="lang lang-es">Precisión y claridad en cada entrega.</span>
+      <span class="lang lang-en">Precision and clarity in every release.</span>
+    </h2>
     <div class="space-y-4 text-base leading-relaxed text-offwhite/80">
-      <p>
-        I shape full-stack experiences for teams that need predictability without sacrificing feel.
-        Every page is optimized for fast paint, accessible flows, and transparent instrumentation.
-      </p>
-      <p>
-        I collaborate closely with product, design, and platform to align runtime budgets with
-        business KPIs and spend cycles.
-      </p>
-      <p>
-        From component libraries to deploy pipelines, the focus is always on measurable impact and
-        clarity in delivery.
-      </p>
+      {aboutEs.map((paragraph) => (
+        <p class="lang lang-es">{paragraph}</p>
+      ))}
+      {aboutEn.map((paragraph) => (
+        <p class="lang lang-en">{paragraph}</p>
+      ))}
     </div>
   </div>
 </section>

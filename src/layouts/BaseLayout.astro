@@ -28,7 +28,63 @@ const canonicalUrl = 'https://cristianflorez.dev';
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#0B0D10" />
   </head>
-  <body class="bg-dark text-offwhite">
+  <body class="bg-dark text-offwhite" data-lang="en">
     <slot />
+    <script type="module">
+      (() => {
+        const body = document.body;
+        const buttons = () => Array.from(document.querySelectorAll('[data-lang-toggle]'));
+        const storedLang = localStorage.getItem('preferredLang');
+        const fallbackLang = navigator.language?.startsWith('es') ? 'es' : 'en';
+        const initialLang = storedLang || fallbackLang;
+        let pointerRAF;
+        let pointerTimeout;
+
+        const setLang = (lang) => {
+          body.dataset.lang = lang;
+          localStorage.setItem('preferredLang', lang);
+          buttons().forEach((btn) => {
+            btn.setAttribute('aria-pressed', String(lang === 'es'));
+          });
+        };
+
+        window.toggleLanguage = () => {
+          const next = body.dataset.lang === 'es' ? 'en' : 'es';
+          setLang(next);
+        };
+
+        const updatePointer = (x, y) => {
+          body.style.setProperty('--pointer-x', `${x}px`);
+          body.style.setProperty('--pointer-y', `${y}px`);
+        };
+
+        const handlePointerMove = (event) => {
+          if (pointerRAF) {
+            cancelAnimationFrame(pointerRAF);
+          }
+          pointerRAF = requestAnimationFrame(() => {
+            updatePointer(event.clientX, event.clientY);
+            body.style.setProperty('--pointer-opacity', '0.8');
+          });
+          clearTimeout(pointerTimeout);
+          pointerTimeout = setTimeout(() => {
+            body.style.setProperty('--pointer-opacity', '0');
+          }, 1000);
+        };
+
+        document.addEventListener('pointermove', handlePointerMove, { passive: true });
+        document.addEventListener('pointerleave', () => {
+          body.style.setProperty('--pointer-opacity', '0');
+        });
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', () => setLang(initialLang));
+        } else {
+          setLang(initialLang);
+        }
+
+        body.style.setProperty('--pointer-opacity', '0');
+      })();
+    </script>
   </body>
 </html>
