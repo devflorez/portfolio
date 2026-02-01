@@ -1,6 +1,7 @@
 export interface StackCategory {
   title: string;
   description: string;
+  descriptionEn: string;
   tools: string[];
 }
 

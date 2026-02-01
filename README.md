@@ -27,6 +27,8 @@ vercel deploy --prod
 - **Interactions:** Hover/ focus states use accent blue, focus-visible rings, and soft card transitions—no heavy JS or carousels.
 - **Accessibility:** Semantic sections, meaningful headings/links, focus-visible outlines, and motion preferences honored.
 - **Localization:** A lightweight toggle surfaces Spanish and English copy for each section, defaulting to the browser language and persisting the choice via `localStorage`.
+- **Pointer effect:** Subtle radial glow follows the cursor via CSS custom properties updated in BaseLayout’s script, adding a premium touch without heavy JS.
+- **SEO:** Head metadata now includes robots, keywords, OG image, Twitter cards, and structured person data derived from `siteMetadata`, so crawlers receive canonical + social/technical context.
 
 ## Requirements checklist
 - [x] Astro + TypeScript + Tailwind single-page (Hero, About, Stack, Projects, Contact/Footer).

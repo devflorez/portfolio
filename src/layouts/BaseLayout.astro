@@ -10,7 +10,9 @@ interface Props {
 const { title, description } = Astro.props as Props;
 const pageTitle = title ? `${title} | ${siteMetadata.name}` : siteMetadata.name;
 const pageDescription = description ?? siteMetadata.description;
-const canonicalUrl = 'https://cristianflorez.dev';
+const canonicalUrl = siteMetadata.siteUrl ?? 'https://cristianflorez.co';
+const ogImage = siteMetadata.ogImage ?? `${canonicalUrl}/og-image.png`;
+const keywords = siteMetadata.keywords?.join(', ') ?? 'Full Stack Developer, Astro, Clean Architecture';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -19,14 +21,42 @@ const canonicalUrl = 'https://cristianflorez.dev';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="/favicon.ico" />
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:site_name" content={siteMetadata.name} />
     <meta property="og:url" content={canonicalUrl} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={siteMetadata.twitterHandle ?? ''} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="image_src" href={ogImage} />
     <meta name="theme-color" content="#0B0D10" />
+    <script type="application/ld+json">
+      {{
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: siteMetadata.name,
+        url: canonicalUrl,
+        email: siteMetadata.email,
+        sameAs: [siteMetadata.linkedin, siteMetadata.github],
+        jobTitle: siteMetadata.roleEn,
+        description: siteMetadata.descriptionEn,
+        image: ogImage,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Rionegro',
+          addressRegion: 'Antioquia',
+          addressCountry: 'COL',
+        },
+      }}
+    </script>
   </head>
   <body class="bg-dark text-offwhite" data-lang="en">
     <slot />

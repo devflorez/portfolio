@@ -1,13 +1,28 @@
 export interface Project {
   name: string;
   description: string;
+  descriptionEn: string;
   impact: string;
+  impactEn: string;
   stack: string[];
   live: string;
-  repo: string;
+  repo?: string;
 }
 
 export const projects: Project[] = [
+  {
+    name: 'Personal Finance Dashboard',
+    description:
+      'Dashboard personal de finanzas con registro de movimientos, presupuestos, reportes y chat con IA.',
+    impact:
+      'Permite monitorear dinero real y simulado, entregando insights inmediatos y comunicación contextual con un asistente IA.',
+    descriptionEn:
+      'Personal finance dashboard tracking transactions, budgets, reports, and an AI chat assistant.',
+    impactEn:
+      'Gives real-time visibility into spending while surfacing insights and contextual AI chat for financial decisions.',
+    stack: ['Next.js 15', 'React 19', 'Tailwind CSS 4', 'Zustand', 'Supabase (optional)', 'AI SDK (OpenRouter)', 'Serwist PWA'],
+    live: 'https://www.finzly.app/',
+  },
   {
     name: 'video-to-gif-cli',
     description: 'Ligera CLI para convertir MP4/MOV en GIFs optimizados con ffmpeg.',

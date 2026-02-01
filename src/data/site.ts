@@ -15,6 +15,10 @@ export const siteMetadata = {
   locationEn: 'Rionegro, Colombia · Remote',
   availability: 'Open for select collaborations',
   availabilityEn: 'Open for select collaborations',
+  siteUrl: 'https://www.devflorez.com',
+  ogImage: 'https://www.devflorez.com/og-image.png',
+  keywords: ['Astro', 'Full Stack Developer', 'Clean Architecture', 'React', 'Cloud'],
+  twitterHandle: '@devflorez',
 };
 
 export const navLinks = [
