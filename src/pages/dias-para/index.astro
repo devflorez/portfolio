@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteMetadata } from '../../data/site';
+import { events } from '../../data/events';
+import { calculateDaysUntilEvent } from '../../utils/daysUntil';
+
+const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Bogota' }));
+const countdowns = events.map((event) => calculateDaysUntilEvent(event, now));
+const title = '¿Cuántos días faltan para eventos clave? – Contadores colombianos';
+const description =
+  'Cuenta atrás para fechas importantes en Colombia: Navidad, Año Nuevo, Fin de Año y Semana Santa.';
+const ogImage = siteMetadata.ogImage ?? `${siteMetadata.siteUrl}/og-image.png`;
+const ogUrl = `${siteMetadata.siteUrl}/dias-para`;
+const formatter = new Intl.DateTimeFormat('es-CO', {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+<head>
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:url" content={ogUrl} />
+  <meta property="og:type" content="website" />
+  <meta charset="utf-8" />
+</head>
+
+<BaseLayout title={title} description={description} canonical={ogUrl}>
+  <div class="min-h-screen bg-dark text-offwhite">
+    <main class="mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-6 py-20 text-center">
+      <section class="space-y-8">
+        <p class="text-xs uppercase tracking-[0.4em] text-muted">Herramienta · Días para</p>
+        <h1 class="text-4xl font-semibold leading-tight text-offwhite md:text-5xl">
+          ¿Cuántos días faltan para tus próximas fechas clave?
+        </h1>
+        <p class="text-sm text-muted">
+          Calculado con la hora oficial de Bogotá; haz clic en uno de los contadores para ver los detalles.
+        </p>
+        <div class="grid gap-6 md:grid-cols-2">
+          {countdowns.map((countdown) => (
+            <article class="flex flex-col items-start gap-3 rounded-3xl border border-white/10 bg-black/40 px-6 py-8 text-left shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
+              <p class="text-xs uppercase tracking-[0.4em] text-muted">{countdown.event.nameEs}</p>
+              <p class="text-sm text-muted">
+                <time datetime={countdown.targetDate.toISOString()}>
+                  {formatter.format(countdown.targetDate)}
+                </time>
+              </p>
+              <p class="text-3xl font-semibold text-accent">
+                {countdown.isToday ? 'Hoy es el día 🎉' : `Faltan ${countdown.daysUntil} días`}
+              </p>
+              <a
+                class="mt-2 text-xs uppercase tracking-[0.4em] text-white/70 transition hover:text-accent"
+                href={`/dias-para/${countdown.event.slug}`}
+              >
+                Ver contador
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+  </div>
+</BaseLayout>

@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteMetadata } from '../../data/site';
+import { events, getEventBySlug } from '../../data/events';
+import { calculateDaysUntilEvent } from '../../utils/daysUntil';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  return events.map((event) => ({
+    params: { slug: event.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const event = getEventBySlug(slug);
+
+if (!event) {
+  throw new Error(`Evento desconocido: ${slug}`);
+}
+
+const timezoneNow = new Date(
+  new Date().toLocaleString('en-US', {
+    timeZone: 'America/Bogota',
+  })
+);
+
+const countdown = calculateDaysUntilEvent(event, timezoneNow);
+const todayLabel = new Intl.DateTimeFormat('es-CO', {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(timezoneNow);
+const targetLabel = new Intl.DateTimeFormat('es-CO', {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(countdown.targetDate);
+
+const title = `¿Cuántos días faltan para ${event.nameEs}? – Contador actualizado`;
+const description = `Descubre cuántos días faltan para ${event.nameEs}. Contador actualizado según la fecha actual en Colombia.`;
+const ogImage = siteMetadata.ogImage ?? `${siteMetadata.siteUrl}/og-image.png`;
+const ogUrl = `${siteMetadata.siteUrl}/dias-para/${event.slug}`;
+const daysText = countdown.isToday ? 'Hoy es el día 🎉' : `Faltan ${countdown.daysUntil} días`;
+const daysValue = countdown.daysUntil.toString();
+const isFuture = countdown.daysUntil > 0;
+---
+<head>
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:url" content={ogUrl} />
+  <meta property="og:type" content="website" />
+  <meta charset="utf-8" />
+</head>
+
+<BaseLayout title={title} description={description} canonical={ogUrl}>
+  <div class="min-h-screen bg-dark text-offwhite">
+    <main class="mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-6 py-20 text-center">
+      <section class="space-y-8">
+        <p class="text-xs uppercase tracking-[0.4em] text-muted">Herramienta · Cuenta atrás Colombia</p>
+        <div>
+          <h1 class="text-4xl font-semibold leading-tight text-offwhite md:text-5xl">
+            ¿Cuántos días faltan para {event.nameEs}?
+          </h1>
+          <p class="mt-3 text-sm font-medium text-muted uppercase tracking-[0.3em]">
+            Fecha objetivo:
+            <time datetime={countdown.targetDate.toISOString()} class="text-accent">{targetLabel}</time>
+          </p>
+        </div>
+        <div class="flex flex-col items-center gap-3 rounded-3xl border border-white/10 bg-black/40 px-10 py-12 text-center shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+          <span class="text-xs uppercase tracking-[0.3em] text-muted">Cuenta regresiva</span>
+          <p
+            aria-live="polite"
+            class="text-6xl font-semibold text-accent md:text-7xl"
+          >
+            {countdown.isToday ? '0' : daysValue}
+          </p>
+          <p class="text-lg font-semibold text-offwhite">{daysText}</p>
+          <p class="text-sm text-muted">
+            Hoy es <time datetime={timezoneNow.toISOString()}>{todayLabel}</time>
+          </p>
+        </div>
+        <p class="text-sm text-muted">Contador calculado según la hora oficial de Colombia.</p>
+        <div class="flex flex-wrap justify-center gap-3 text-xs uppercase tracking-[0.4em]">
+          <a
+            class="rounded-full border border-white/20 px-5 py-3 transition hover:border-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            href="/dias-para"
+          >
+            Ver otros eventos
+          </a>
+          <a
+            class="rounded-full border border-white/20 px-5 py-3 transition hover:border-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            href="/festivo"
+          >
+            ¿Hoy es festivo?
+          </a>
+        </div>
+        <nav class="mt-6 text-xs uppercase tracking-[0.3em] text-muted">
+          <p class="mb-2 text-sm text-offwhite">Salta a otro contador:</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            {events
+              .filter((item) => item.slug !== event.slug)
+              .map((item) => (
+                <a
+                  class="transition hover:text-accent"
+                  href={`/dias-para/${item.slug}`}
+                >
+                  {item.nameEs}
+                </a>
+              ))}
+          </div>
+        </nav>
+      </section>
+    </main>
+  </div>
+</BaseLayout>
